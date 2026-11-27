@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#122b49">
+  <title>Gestión Escolar | Escuela Subteniente Luis Cruz Martínez (D-16)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="login-screen" class="login-layout">
+    <section class="login-card">
+      <img class="brand-mark" src="logo-escuela.jpg" alt="Logo de Escuela Subteniente Luis Cruz Martínez">
+      <p class="eyebrow">PLATAFORMA INTEGRAL</p>
+      <h1>Escuela Subteniente Luis Cruz Martínez (D-16)</h1>
+      <p class="muted">Ingresa con tu nombre de usuario o RUT, sin contraseña.</p>
+      <form id="login-form">
+        <label for="login-id">Nombre de usuario o RUT</label>
+        <input id="login-id" name="login-id" autocomplete="username" placeholder="Ej.: juan.perez o 12.345.678-9" required>
+        <button class="button button-primary full-width" type="submit">Ingresar</button>
+        <p id="login-error" class="form-error" role="alert"></p>
+        <button id="show-register" class="button button-secondary full-width" type="button">Crear una cuenta</button>
+      </form>
+      <form id="register-form" hidden>
+        <label for="register-role">Tipo de cuenta</label>
+        <select id="register-role" name="role" required>
+          <option value="guardian">Apoderado</option>
+          <option value="teacher">Docente</option>
+        </select>
+        <label for="register-name">Nombre completo</label>
+        <input id="register-name" name="fullName" autocomplete="name" required>
+        <label for="register-username">Nombre de usuario o RUT</label>
+        <input id="register-username" name="username" autocomplete="username" required>
+        <div id="guardian-fields">
+          <label for="student-name">Nombre del alumno</label>
+          <input id="student-name" name="studentName" required>
+          <label for="guardian-grade">Curso del alumno</label>
+          <input id="guardian-grade" name="grade" placeholder="Ej.: 4to A" required>
+        </div>
+        <div id="teacher-fields" hidden>
+          <label for="staff-area">Área</label>
+          <select id="staff-area" name="area">
+            <option value="teaching">Docencia</option>
+            <option value="library">Biblioteca</option>
+          </select>
+          <div id="teacher-grade-field">
+            <label for="teacher-grade">Curso a cargo</label>
+            <input id="teacher-grade" name="grade" placeholder="Ej.: 4to A">
+          </div>
+          <label for="staff-key">Clave de registro de personal</label>
+          <input id="staff-key" name="staffKey" type="password" autocomplete="off">
+          <p class="muted registration-note">La clave compartida se solicita solo para crear una cuenta de personal, no al iniciar sesión.</p>
+        </div>
+        <button class="button button-primary full-width" type="submit">Registrarse</button>
+        <p id="register-error" class="form-error" role="alert"></p>
+        <button id="show-login" class="button button-secondary full-width" type="button">Volver a iniciar sesión</button>
+      </form>
+      <p id="server-error" class="form-error" role="status"></p>
+    </section>
+  </main>
+
+  <div id="app-screen" class="app-shell" hidden>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Escuela Subteniente Luis Cruz Martínez (D-16), inicio">
+        <img class="brand-mark small" src="logo-escuela.jpg" alt="">
+        <span><strong>Escuela Subteniente Luis Cruz Martínez (D-16)</strong><small>Plataforma de Gestión Escolar</small></span>
+      </a>
+      <div class="account">
+        <span id="user-badge" class="user-badge"></span>
+        <button id="logout-button" class="button button-quiet" type="button">Cerrar sesión</button>
+      </div>
+    </header>
+    <div class="workspace">
+      <aside class="sidebar">
+        <p class="eyebrow">MENÚ PRINCIPAL</p>
+        <nav id="main-nav" class="main-nav" aria-label="Navegación principal"></nav>
+        <div class="sidebar-note">
+          <span class="status-dot"></span>
+          <span><strong>Sistema activo</strong><small>Información de demostración</small></span>
+        </div>
+      </aside>
+      <main id="content" class="content" tabindex="-1"></main>
+    </div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
